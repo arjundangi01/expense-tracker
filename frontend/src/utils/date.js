@@ -3,19 +3,26 @@ export const getDate = (createdAt) => {
 
   const day = date.getDate();
   const month = date.toLocaleString("en-US", { month: "short" });
+
   return { day, month };
 };
 
-export function calculateTimeRemaining(expirationDate) {
-  const now = new Date();
-  const expiration = new Date(expirationDate);
+export const monthObj = {
+  1: "Jan",
+  2: "Feb",
+  3: "Mar",
+  4: "Apr",
+  5: "May",
+  6: "Jun",
+  7: "Jul",
+  8: "Aug",
+  9: "Sep",
+  10: "Oct",
+  11: "Nov",
+  12: "Dec",
+};
 
-  // Calculate the difference in milliseconds
-  const difference = expiration - now;
-
-  // Convert the difference to days
-  const daysRemaining = Math.floor(difference / (1000 * 60 * 60 * 24));
-
-  return daysRemaining
-  // return `${daysRemaining} day${daysRemaining !== 1 ? 's' : ''}`;
-}
+export const yearObj = {
+  2024: "2024",
+  2023: "2023",
+};

@@ -5,6 +5,7 @@ const expenseSchema = mongoose.Schema(
     title: String,
     category: String,
     amount: Number,
+    date:String,
     createdBy: String,
   },
   {
@@ -12,5 +13,5 @@ const expenseSchema = mongoose.Schema(
   }
 );
 
-const ExpenseModel = mongoose.model("bid", expenseSchema);
+const ExpenseModel = mongoose.model("expenses", expenseSchema);
 module.exports = ExpenseModel;

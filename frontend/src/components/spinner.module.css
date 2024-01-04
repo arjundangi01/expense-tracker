@@ -1,63 +1,74 @@
 .loader {
-    width: 64px;
-    height: 64px;
-    position: relative;
-    background: #FFF;
-    border-radius: 4px;
-    overflow: hidden;
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  transform: rotate(165deg);
+ }
+ 
+ .loader:before, .loader:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 0.25em;
+  transform: translate(-50%, -50%);
+ }
+ 
+ .loader:before {
+  animation: before8 2s infinite;
+ }
+ 
+ .loader:after {
+  animation: after6 2s infinite;
+ }
+ 
+ @keyframes before8 {
+  0% {
+   width: 0.5em;
+   box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
   }
-  
-  .loader:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 40px;
-    height: 40px;
-    transform: rotate(45deg) translate(30%, 40%);
-    background: #ff9371;
-    box-shadow: 32px -34px 0 5px #ff3d00;
-    animation: slide 2s infinite ease-in-out alternate;
+ 
+  35% {
+   width: 2.5em;
+   box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75), 0 0.5em rgba(111, 202, 220, 0.75);
   }
-  
-  .loader:after {
-    content: "";
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #ff3d00;
-    transform: rotate(0deg);
-    transform-origin: 35px 145px;
-    animation: rotate 2s infinite ease-in-out;
+ 
+  70% {
+   width: 0.5em;
+   box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75), 1em 0.5em rgba(111, 202, 220, 0.75);
   }
-  
-  @keyframes slide {
-    0% , 100% {
-      bottom: -35px
-    }
-  
-    25% , 75% {
-      bottom: -2px
-    }
-  
-    20% , 80% {
-      bottom: 2px
-    }
+ 
+  100% {
+   box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75), -1em 0.5em rgba(111, 202, 220, 0.75);
   }
-  
-  @keyframes rotate {
-    0% {
-      transform: rotate(-15deg)
-    }
-  
-    25% , 75% {
-      transform: rotate(0deg)
-    }
-  
-    100% {
-      transform: rotate(25deg)
-    }
+ }
+ 
+ @keyframes after6 {
+  0% {
+   height: 0.5em;
+   box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
   }
+ 
+  35% {
+   height: 2.5em;
+   box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75), -0.5em 0 rgba(233, 169, 32, 0.75);
+  }
+ 
+  70% {
+   height: 0.5em;
+   box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75), -0.5em 1em rgba(233, 169, 32, 0.75);
+  }
+ 
+  100% {
+   box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75), -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
+ }
+ 
+ .loader {
+  position: absolute;
+  top: calc(50% - 1.25em);
+  left: calc(50% - 1.25em);
+ }

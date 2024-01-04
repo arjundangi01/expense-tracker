@@ -1,12 +1,28 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImCancelCircle } from "react-icons/im";
 import { useDispatch } from "react-redux";
 import Svg from "../../../components/svg";
-const Card = ({ title, category, amount, _id, onGetAllProducts }) => {
+import { getDate } from "../../../utils/date";
+const Card = ({
+  title,
+  category,
+  amount,
+  _id,
+  onGetAllExpense,
+  createdAt,
+  filter,
+  setIsLoading,
+  date,
+  month,
+  year,
+}) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-
+  const [dateObj, setDateObj] = useState({});
+  useEffect(() => {
+    setDateObj(getDate(date));
+  }, []);
   const onDelete = async (_id) => {
     try {
       setLoading(true);
@@ -14,7 +30,7 @@ const Card = ({ title, category, amount, _id, onGetAllProducts }) => {
         `${process.env.REACT_APP_BASE_URL}/expenses/delete/${_id}`
       );
       console.log(response);
-      dispatch(onGetAllProducts());
+      dispatch(onGetAllExpense(filter, setIsLoading, month, year));
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -33,14 +49,16 @@ const Card = ({ title, category, amount, _id, onGetAllProducts }) => {
         />
 
         <div>
-          <p className="text-lg ">{title}</p>
+          <p className="text-lg sm:text-xl  font-bold ">{title}</p>
           <p className="text-sm">{category}</p>
         </div>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between w-[110px] sm:w-[140px] ">
         <div>
           <p className="text-lg "> ₹ {amount}</p>
-          <p className="text-sm">date</p>
+          <p className="text-sm">
+            {dateObj.day} {dateObj.month}
+          </p>
         </div>
         <div className="bg-[#f2aa93] h-full flex items-center px-2">
           {loading ? (
