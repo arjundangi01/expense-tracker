@@ -21,11 +21,11 @@ expenseRouter.post("/add", authentication, async (req, res) => {
 expenseRouter.get("/all", authentication, async (req, res) => {
   const userId = req.userId;
   const { filter, month, year } = req.query;
-  
+
   console.log(month, year);
 
-  const firstDayOfMonth = new Date(year, month - 1, 1); // Month is 0-based in JavaScript Date
-  const lastDayOfMonth = new Date(year, month, 1);
+  const firstDayOfMonth = new Date(Date.UTC(year, month - 1, 0));
+  const lastDayOfMonth = new Date(Date.UTC(year, month, 0));
   let filterObj = {
     createdBy: userId,
     date: {
@@ -54,8 +54,11 @@ expenseRouter.get("/all", authentication, async (req, res) => {
       month,
       year,
     });
-    
-    const totalAmount = filteredExpenses.reduce((sum, doc) => sum + doc.amount, 0);
+
+    const totalAmount = filteredExpenses.reduce(
+      (sum, doc) => sum + doc.amount,
+      0
+    );
 
     const categoryTotals = {
       rent: 0,
@@ -71,7 +74,7 @@ expenseRouter.get("/all", authentication, async (req, res) => {
       categoryTotals[category] = (categoryTotals[category] || 0) + amount;
     });
 
-    res.send({ filteredExpenses, totalAmount, categoryTotals,budgetLimit });
+    res.send({ filteredExpenses, totalAmount, categoryTotals, budgetLimit });
   } catch (error) {
     console.log(error);
     res.send({ message: "internal error" });
@@ -104,7 +107,7 @@ expenseRouter.post("/budget", authentication, async (req, res) => {
       existingBudget.amount = amount;
       existingBudget.save();
 
-      return res.send({ message: "Budget updated",budget:existingBudget });
+      return res.send({ message: "Budget updated", budget: existingBudget });
     }
 
     const newBudget = await BudgetModel.create({
@@ -113,7 +116,7 @@ expenseRouter.post("/budget", authentication, async (req, res) => {
       year,
       createdBy: userId,
     });
-    res.send({ message: "Budget Added",budget:newBudget });
+    res.send({ message: "Budget Added", budget: newBudget });
   } catch (error) {
     console.log(error);
     res.send({ message: "internal error" });
