@@ -23,7 +23,7 @@ const Card = ({
   useEffect(() => {
     setDateObj(getDate(date));
   }, []);
-  const onDelete = async (_id) => {
+  const onDelete = async () => {
     try {
       setLoading(true);
       const response = await axios.delete(
@@ -67,7 +67,7 @@ const Card = ({
               <span class="sr-only">Loading...</span>
             </div>
           ) : (
-            <ImCancelCircle onClick={() => onDelete(_id)} />
+            <ImCancelCircle onClick={onDelete} />
           )}
         </div>
       </div>

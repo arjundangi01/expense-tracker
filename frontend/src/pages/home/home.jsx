@@ -178,6 +178,7 @@ const Home = () => {
               <div className="w-[100%] m-auto min-h-[60%] max-h-[60%] px-2 overflow-y-scroll  custom-scrollbar">
                 {allExpenses?.map((ele) => (
                   <Card
+                  key={ele?._id}
                     {...ele}
                     setIsLoading={setLoading}
                     filter={filter}
