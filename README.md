@@ -28,6 +28,6 @@ NOTE* - make sure there is no '/' at the end of url.
 1. run command - ' npm i ' to install dependencies
 2. run command -  npm run dev to start project locally
 3. ENV Setup - ENV varibles in env file are <br/>
-PORT=8080 and MONGO_URI= mongodb+srv://<userName>:<password>@cluster0.k4captk.mongodb.net  <br/>
+PORT=8080 and MONGO_URI= mongodb+srv://userName*:password*@cluster0.k4captk.mongodb.net  <br/>
 NOTE* - make sure there is no '/' at the end of url.
 
