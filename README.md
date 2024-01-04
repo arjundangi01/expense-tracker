@@ -1,10 +1,12 @@
 # Expense Tracker Assignment Description
 
 ## Live Link - https://spectacular-youtiao-8b37f7.netlify.app/
+
+
 # Approach
 ### Front End Approach:
 
-I developed the front end of the expense tracker using React and CSS to create a seamless user experience. The application begins with a secure login and signup page. Without authentication, users cannot access the dashboard, ensuring data privacy.
+I developed the front end of the expense tracker using React and Tailwind CSS to create a seamless user experience. The application begins with a secure login and signup page. Without authentication, users cannot access the dashboard, ensuring data privacy.
 
 Upon successful login, users are redirected to the home page where they can view the total expenses and monthly budget limit. The home page features three tabs:
 
