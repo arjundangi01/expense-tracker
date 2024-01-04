@@ -1,8 +1,8 @@
 Expense Tracker Assignment Description
 
 # Tech Used 
- ## Frontend - 
+ ### Frontend - 
  React JS, Tailwind CSS, Javascript
- ## Backend - 
+ ### Backend - 
  Node, Express, MongoDB, Javascript
 
